@@ -7,7 +7,6 @@ class Config:
 	sourceIcsUrls = []
 	configJson = {}
 	calendarName = None
-	apiKey = None
 	pointstreakTeams = []
 
 	def from_json_file(self,json_file_path):
@@ -18,7 +17,6 @@ class Config:
 		if not config.configJson:
 			print("No configuration file found in "+ json_file_path);           
 			return None
-		config.apiKey = config.configJson["apiKey"];
 		config.sourceIcsUrls = config.configJson["sourceIcsUrls"];
 		config.defaultCalendarName = config.configJson["defaultCalendarName"]
 		return config;
@@ -29,5 +27,5 @@ class Config:
 		return self;
 
 	def to_string(self):
-		return self.apiKey + "\n"+str(self.pointstreakTeams[0].to_string());
+		return str(self.pointstreakTeams[0].to_string());
 

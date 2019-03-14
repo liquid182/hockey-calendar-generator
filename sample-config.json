@@ -1,6 +1,6 @@
 {
-  "apiKey": "AIzaSyAvkSRkhSthnODKuIiSEvTp3rLBXWhudpk",
   "defaultCalendarName":"RM Hockey TEST",
+  "defaultCsvFileName": "~/Downloads/Hockey.csv",
   "sourceIcsUrls": [
     {
       "url":"",
@@ -9,9 +9,14 @@
   ],
   "pointstreakTeams": [
     {
+      "nameReplacements":
+      { 
+        "A La Mode":"^.*A[-\\s]+La[-\\s]+Mode.*$"
+      },
       "teamId": 725612,
       "seasonId": 18707,
-      "calendarName": "RM Hockey TEST"
+      "calendarName": "RM Hockey TEST",
+      "csvFileName": "~/Downloads/A-La-Mode.csv"
     }
   ]
 }
