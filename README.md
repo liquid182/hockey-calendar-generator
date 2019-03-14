@@ -78,5 +78,6 @@ Will not write anything to calendar, instead print events to screen.
 Will only get games that haven't already happened.
 
 Given the above, the following would do a test run of future games provided in the config:
+
 ```python3 google_calendar_importer.py --test --future-only```
 
