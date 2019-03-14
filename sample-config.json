@@ -1,0 +1,17 @@
+{
+  "apiKey": "AIzaSyAvkSRkhSthnODKuIiSEvTp3rLBXWhudpk",
+  "defaultCalendarName":"RM Hockey TEST",
+  "sourceIcsUrls": [
+    {
+      "url":"",
+      "calendarName":""
+    }
+  ],
+  "pointstreakTeams": [
+    {
+      "teamId": 725612,
+      "seasonId": 18707,
+      "calendarName": "RM Hockey TEST"
+    }
+  ]
+}
