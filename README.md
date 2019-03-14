@@ -15,7 +15,7 @@ Sample Config:
   "sourceIcsUrls": [
     {
       "url":"",
-      "calendarName":""
+      "calendarName":"",
       "nameReplacements":{
         "A La Mode":"^.*A[-\\s]+La[-\\s]+Mode.*$"
       }
@@ -50,8 +50,16 @@ A dictionary of "name":"expression" pairs used to replace team names which are m
 ```
 The former will check the string to see if it matches the provided regular expression, and if it matches, replaces the original with "A La Mode".  The latter is simpler, where it will substitute "Da Toads" if the original is spelt "Da Todes".
 
-sourceIcsUrls: Array of an ICS calendar.  Expected format to match bench.ashl.com.
-pointstreakTeams: Array of pointstreak teams.  Required to provide teamId, seasonId (found in the url of pointstreak team page)
+### sourceIcsUrls 
+Array of an ICS calendar.  Expected format to match bench.ashl.com. Required to provide the url property.
+#### url
+Fully Qualified URL of the schedule's ICS in question
+### pointstreakTeams
+Array of pointstreak teams.  Required to provide teamId, seasonId (found in the url of pointstreak team page)
+#### teamId
+Team Identifier as seen within the pointstreak teams homepage URL (`&teamId=<teamId>`)
+#### seasonId
+Team Identifier as seen within the pointstreak teams homepage URL (`&seasonId=<seasonId>`)
 
 ## Run
 
