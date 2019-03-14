@@ -1,12 +1,12 @@
-##Installation
+## Installation
 
-pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+```pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib```
 
-##Setup
+## Setup
 
 Modify config.json to match your teams information
 
-##Configs
+## Configs
 Sample Config:
 ```json
 {
@@ -36,10 +36,13 @@ Sample Config:
 
 _**Note: If a Calendar ID is provided,the Calendar Name will be ignored.**_
 
-*defaultCalendarName:* Name of your google calendar to import events into (If no configuration is found on your calendar config directly)
-*defaultCalendarId:* ID of your google calendar to import events into  (If no configuration is found on your calendar config directly)
+### defaultCalendarName 
+Name of your google calendar to import events into (If no configuration is found on your calendar config directly)
 
-*nameReplacements:* 
+### defaultCalendarId
+ID of your google calendar to import events into  (If no configuration is found on your calendar config directly)
+
+### nameReplacements
 A dictionary of "name":"expression" pairs used to replace team names which are misspelt.  Can support regular expressions or exact strings in value, the key is expected to be the replacement value.  Will work on both home and away teams.  For example, both the following are valid:
 ```json
 "A La Mode":"^.*A[-\\s]+La[-\\s]+Mode.*$",
@@ -50,7 +53,7 @@ The former will check the string to see if it matches the provided regular expre
 sourceIcsUrls: Array of an ICS calendar.  Expected format to match bench.ashl.com.
 pointstreakTeams: Array of pointstreak teams.  Required to provide teamId, seasonId (found in the url of pointstreak team page)
 
-##Run
+## Run
 
 ```python3 google_calendar_importer.py```
 By default the above will parse all teams and write to the configured calendar (if found)
