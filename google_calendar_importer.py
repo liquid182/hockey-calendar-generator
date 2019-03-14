@@ -1,19 +1,21 @@
 from __future__ import print_function
 from config import Config
 import google_calendar_util
-import csv_util
+from datetime import datetime
+import sys
 
 config_file_loc = "config.json"
 verbose = False
-write_to_csv = False
 write_to_cal = True
+future_only = False
+now = None
 
 def init():
     p("Reading configuration...")
     config = Config().from_json_file(config_file_loc)
     p("Initializing Pointstreak Teams")
     config.init_pointstreak_teams()
-    #jconfig.init_ics_teams()
+    #config.init_ics_teams()
     return config;
 
 def create_calendar(config):
@@ -33,13 +35,20 @@ def create_calendar(config):
                 p("Clearing all events from calendar:"+cal_id);
                 clear_calendar(service, cal_id)
                 cleared_calendars.append(cal_id)
-            games = psTeam.schedule.as_calendar_event_list()
-            p("Writing {} games to schedule.".format(len(games)))
-            for game in games:
-                if write_to_cal:
-                    google_calendar_util.insert_new_event(service,cal_id,game)
-        if write_to_csv:
-            continue
+            p("Writing {} games to schedule.".format(len(psTeam.schedule.games)))
+            for game in psTeam.schedule.games:
+                write_game = True
+                if future_only:
+                    write_game = check_future_date(game.startdate)
+                    print("Do Write?"+str(write_game))
+                if write_game:   
+                    google_calendar_util.insert_new_event(service,cal_id,game.to_calendar_event())
+
+def check_future_date(date):
+    if date < now:
+        return False
+    else:
+        return True
 
 def clear_calendar(service,cal_id):
     events = google_calendar_util.get_cal_events(service,cal_id)
@@ -56,4 +65,13 @@ def p(string):
 
 if __name__ == '__main__':
     config = init()
+    now = datetime.now()
+
+    if "--test" in sys.argv:
+        write_to_cal = False
+    if "--verbose" in sys.argv:
+        verbose = True
+    if "--future-only" in sys.argv:
+        future_only = True
     create_calendar(config)
+

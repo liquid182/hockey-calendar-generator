@@ -94,12 +94,6 @@ class PointstreakTeamSchedule:
 					break
 		return newName
 
-	def as_calendar_event_list(self):
-		event_list = []
-		for game in self.games:
-			event_list.append(game.to_calendar_event());
-		return event_list;
-
 	def init(self,url):
 		self.webpage_url = url;
 		get_page_source();
@@ -115,12 +109,12 @@ class PointStreakGame:
 	def to_calendar_event(self):
 		#create_event_object(event_name,startdate,timezone='America/Los_Angeles',enddate=None,event_location="",event_description=""):
 		return CalendarEvent.create_event_object(
-			event_name = self.away + " @ " + self.home,
+			name = self.away + " @ " + self.home,
 			startdate = self.startdate,
-			event_location = self.rink,
-			event_description = self.gamesheet,
+			location = self.rink,
+			description = self.gamesheet,
 			length = DEFAULT_GAME_LENGTH
-			);
+			)
 
 	def to_string(self):
 		return "Home:"+str(self.home)+"\nAway:"+str(self.away)+"\nDate:"+str(self.startdate)+"\nRink:"+str(self.rink)+"\nGamesheetUrl:"+str(self.gamesheet)+"\r\n\n";

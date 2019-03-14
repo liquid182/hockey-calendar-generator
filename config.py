@@ -8,7 +8,6 @@ class Config:
 	configJson = {}
 	calendarName = None
 	pointstreakTeams = []
-
 	def from_json_file(self,json_file_path):
 		config = self
 		if os.path.exists(json_file_path):
