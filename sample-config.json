@@ -1,22 +1,21 @@
 {
   "defaultCalendarName":"RM Hockey TEST",
-  "defaultCsvFileName": "~/Downloads/Hockey.csv",
   "sourceIcsUrls": [
     {
-      "url":"",
-      "calendarName":""
+      "url":"http://cluster.leaguestat.com/feed/index.php?feed=ashlkit&key=43dfb5a558399aad&client_code=c-burnaby&view=scheduledownload&team_id=9160&season_id=218",
+      "calendarName":"Murder 2018\/19"
     }
   ],
-  "pointstreakTeams": [
-    {
-      "nameReplacements":
-      { 
+  "pointstreakTeams":
+    [
+      {
+      "nameReplacements":{ 
         "A La Mode":"^.*A[-\\s]+La[-\\s]+Mode.*$"
       },
       "teamId": 725612,
       "seasonId": 18707,
-      "calendarName": "RM Hockey TEST",
-      "csvFileName": "~/Downloads/A-La-Mode.csv"
+      "calendarName": "A La Mode 2018\/19"
     }
   ]
+
 }
