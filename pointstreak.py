@@ -75,7 +75,10 @@ class PointstreakTeamSchedule:
 				game.away = self.translate_team_name(tds[1].a.string)
 				tmp = tds[4].find_all("a");
 				game.rink = tmp[0].string
-				game.gamesheet = tmp[1]["href"]
+				if( len(tmp) > 1 ):
+					game.gamesheet = tmp[1]["href"];
+				else:
+					game.gamesheet = "";				
 				date = tds[2].string
 				time = tds[3].string
 				gameYear = self.startyear;
