@@ -6,7 +6,7 @@ import urllib.request
 import re
 
 DEFAULT_GAME_LENGTH = 90#IN MINUTES
-SEASON_REGEX = '[^\d]*(\d{4})([-](\d{4}))?'
+SEASON_REGEX = '[^\d]*((\d{2})\d{2})([-](\d{2}(\d{2})?))?'
 SEASON_SELECTOR = "font.season"
 GAME_TABLE_IDENTIFIER = "table.nova-stats-table tr"
 ROWS = ["Home","Away","Rink","Date","Time"]
@@ -59,7 +59,10 @@ class PointstreakTeamSchedule:
 			if( match and match.group(2)):
 				#winter season, 2 years
 				self.startyear = match.group(1)
-				self.endyear = match.group(3)
+				if( match.group(5) ):
+					self.endyear = match.group(4)
+				else:
+					self.endyear = str(match.group(2) +""+ match.group(4))
 			elif (match and match.group(1) ):
 				self.startyear = match.group(1)
 				self.endyear = match.group(1)	
@@ -115,7 +118,7 @@ class PointStreakGame:
 			name = self.away + " @ " + self.home,
 			startdate = self.startdate,
 			location = self.rink,
-			description = self.gamesheet,
+			description = self.away + " @ " +self.home + "\n"+self.gamesheet,
 			length = DEFAULT_GAME_LENGTH
 			)
 

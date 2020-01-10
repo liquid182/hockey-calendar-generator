@@ -40,9 +40,10 @@ def create_calendar(config):
                 write_game = True
                 if future_only:
                     write_game = check_future_date(game.startdate)
-                    print("Do Write?"+str(write_game))
                 if write_game:   
                     google_calendar_util.insert_new_event(service,cal_id,game.to_calendar_event())
+                if verbose:
+                    print(game.to_calendar_event())
 
 def check_future_date(date):
     if date < now:
